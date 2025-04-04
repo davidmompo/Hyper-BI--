@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende Power BI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            background: url('fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #FFE94D;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            transition: background 0.5s;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: radial-gradient(circle 60px at var(--x, 50%) var(--y, 50%), rgba(212, 0, 255, 0.674), transparent 80%);
+            z-index: 1;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #25004d;
+            padding: 5px 10px;
+            padding-right: 20px;
+            box-shadow: 0 0 10px #FFD700;
+            position: relative;
+            z-index: 100; /* Reducir z-index para que no tape el menú */
+        }
+        .navbar .logo {
+            width: 50px;
+            height: auto;
+        }
+        .navbar .brand-name {
+            font-size: 2em;
+            color: #FFE94D;
+            text-shadow: 0 0 15px #ffd500;
+            margin-left: 10px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .menu-links {
+            display: flex;
+            margin-left: auto;
+            gap: 20px;
+            z-index: 9999; /* Asegurarse de que el menú se quede en la capa superior */
+        }
+        .menu-links a {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #1a0033;
+            font-family: 'Orbitron', sans-serif;
+            transition: transform 0.3s;
+            background: #FFE94D;
+        }
+        .menu-links a.inicio {
+            background: purple;
+            color: #FFE94D;
+        }
+        .menu-links a:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: auto;
+            z-index: 1000; /* Asegura que el ícono de menú se quede arriba */
+        }
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #FFE94D;
+            margin: 5px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .menu-toggle.open div:nth-child(1) {
+            transform: rotate(45deg) translateY(18px);
+        }
+        .menu-toggle.open div:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.open div:nth-child(3) {
+            transform: rotate(-45deg) translateY(-18px);
+        }
+        .hero {
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 2em;
+            color: #FFE94D;
+            text-shadow: 0 0 15px #ff00ee;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+        .hero h2 {
+            font-size: 4em;
+            color: #FFE94D;
+            text-shadow: 0 0 15px #ff00ee;
+            margin-top: 0;
+            font-weight: bold;
+        }
+        .hero p {
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        .cards {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        .card {
+            background: #2b005c;
+            width: 22vw; /* Cambiado de 22vw a 22vw */
+            max-width: 300px; /* Limita el ancho máximo de la tarjeta */
+            min-height: 35vh;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #FFD700;
+            transition: transform 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h2 {
+            color: #FFE94D;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #bd77ff;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .card img {
+            border: 4px solid #FFE94D;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 10px auto;
+            object-fit: cover;
+        }
+        .card button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #FFE94D;
+            color: #1a0033;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bolder;
+        }
+        .card button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos adicionales para dispositivos móviles */
+        @media only screen and (max-width: 768px) {
+            .navbar .brand-name {
+                font-size: 1.5em;
+            }
+            .menu-links {
+                flex-direction: column;
+                align-items: center;
+                display: none; /* Ocultar el menú por defecto en pantallas pequeñas */
+                position: absolute;
+                top: 50px;
+                right: 0;
+                background: #25004d;
+                padding: 10px;
+                box-shadow: 0 0 10px #FFD700;
+                z-index: 9999; /* Asegura que el menú se quede en la capa superior */
+            }
+            .menu-links a {
+                margin: 10px 0;
+            }
+            .hero h1 {
+                font-size: 1.5em;
+            }
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .cards {
+                gap: 10px;
+            }
+            .card {
+                width: calc(45% - 10px); /* Ajusta el tamaño para ocupar el 45% del ancho con un pequeño margen */
+                max-width: none; /* Elimina el máximo ancho para que se adapte mejor */
+                min-height: 25vh; /* Ajusta la altura mínima para que se vea mejor en pantallas pequeñas */
+            }
+            .card h2 {
+                font-size: 1.2em; /* Ajusta el tamaño de la fuente para que se vea mejor en pantallas pequeñas */
+            }
+            .card p {
+                font-size: 0.8em; /* Ajusta el tamaño de la fuente para que se vea mejor en pantallas pequeñas */
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Estilos para pantallas grandes */
+        @media only screen and (min-width: 769px) {
+            .menu-links {
+                display: flex; /* El menú se muestra siempre en pantallas grandes */
+                position: initial;
+                background: transparent; /* Sin fondo en pantallas grandes */
+                box-shadow: none; /* Eliminar la sombra en pantallas grandes */
+            }
+            .menu-toggle {
+                display: none; /* Ocultar el botón hamburguesa en pantallas grandes */
+            }
+        }
+
+        /* Estado del menú cuando se despliega */
+        .menu-links.open {
+            display: flex !important; /* Garantiza que se mantenga visible cuando se hace clic en dispositivos móviles */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <span class="brand-name">HYPER BI</span>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu-links">
+            <a href="#" class="inicio">Inicio</a>
+            <a href="#">Tiktok</a>
+            <a href="#">Instagram</a>
+            <a href="#">Youtube</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Aprende</h1>
+        <h2>Power BI</h2>
+        <p>Domina el análisis de datos con nuestros videos, explicaciones y ayuda de IA.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <img src="code.png" alt="DAX & Power Query">
+            <h2>DAX & POWER QUERY</h2>
+            <p>Aprende las fórmulas y procesos para transformar tus datos de manera eficiente.</p>
+            <button onclick="location.href='#'">Ver más</button>
+        </div>
+        <div class="card">
+            <img src="tips.png" alt="Tips & Tricks">
+            <h2>TIPS & TRICKS</h2>
+            <p>Descubre consejos avanzados para mejorar tu productividad en Power BI.</p>
+            <button onclick="location.href='#'">Ver más</button>
+        </div>
+        <div class="card">
+            <img src="play.png" alt="Videos y Explicaciones">
+            <h2>VIDEOS Y EXPLICACIONES</h2>
+            <p>Accede a tutoriales y explicaciones detalladas sobre cada función y característica.</p>
+            <button onclick="location.href='#'">Ver más</button>
+        </div>
+        <div class="card">
+            <img src="ia.png" alt="Ayuda con la IA">
+            <h2>AYUDA CON LA IA</h2>
+            <p>Pregunta cualquier duda y obtén respuestas precisas gracias a nuestra IA.</p>
+            <button onclick="location.href='Certificación.html'">Ver más</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', e => {
+            document.body.style.setProperty('--x', `${e.clientX}px`);
+            document.body.style.setProperty('--y', `${e.clientY}px`);
+        });
+
+        function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            var menuToggle = document.querySelector('.menu-toggle');
+            
+            // Cambiar la clase `open` para alternar la visibilidad del menú
+            menu.classList.toggle('open');
+            
+            // Alternar el icono del menú hamburguesa
+            menuToggle.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

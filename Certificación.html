@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificación Hyper BI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            background: url('fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #FFE94D;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            transition: background 0.5s;
+            overflow-y: auto;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #25004d;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px #FFD700;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+        }
+        .navbar .logo {
+            width: 50px;
+            height: auto;
+        }
+        .navbar .brand-name {
+            font-size: 2em;
+            color: #FFE94D;
+            text-shadow: 0 0 15px #ffd500;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        .menu-links {
+            display: flex;
+            margin-left: auto;
+            gap: 20px;
+        }
+        .menu-links a {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #1a0033;
+            background: #FFE94D;
+            transition: transform 0.3s;
+        }
+        .menu-links a:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+        .hero {
+            margin-top: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3em;
+            color: #FFE94D;
+            text-shadow: 0 0 15px #ff00ee;
+        }
+        .hero p {
+            margin-top: 10px;
+            color: #ffffff;
+            font-size: 1.2em;
+        }
+        .long-div {
+            height: 250px;
+            margin: 30px 100px;
+            border-radius: 20px;
+            border: 4px solid transparent;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            text-align: left;
+        }
+        .yellow {
+            box-shadow: 0 0 15px 5px #FFE94D;
+        }
+        .purple {
+            box-shadow: 0 0 15px 5px rgb(215, 0, 215);
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .answer {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        .yellow-answer {
+            color: #FFF9C4; /* Amarillo clarito */
+        }
+        .purple-answer {
+            color: #D1C4E9; /* Morado clarito */
+        }
+
+        /* Barra de progreso */
+        .progress-container {
+            position: relative;
+            width: 80%;
+            height: 30px;
+            margin: 20px auto;
+            background-color: #ddd;
+            border-radius: 15px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #00FF00; /* Verde neon */
+            border-radius: 15px;
+            transition: width 0.3s ease;
+        }
+
+        /* Botón para verificar respuestas */
+.submit-btn, .download-btn {
+    padding: 10px 30px;
+    font-size: 1.2em;
+    background-color: transparent;
+    color: #FFFFFF; /* Blanco */
+    border: 2px solid #00FFFF;
+    border-radius: 10px; /* Menos redondeado */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px #00FFFF; /* Efecto neón constante */
+    font-family: 'Orbitron', sans-serif; /* Estilo de letra igual al resto */
+    margin-bottom: 20px;
+}
+
+.submit-btn:hover, .download-btn:hover {
+    background-color: rgba(0, 255, 255, 0.2); /* Más neón al pasar el mouse */
+    box-shadow: 0 0 20px 8px #00FFFF;
+}
+
+        /* Botón de descargar certificación */
+        .download-btn {
+            display: none; /* Inicia oculto */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <span class="brand-name">HYPER BI</span>
+        <div class="menu-links">
+            <a href="#" class="inicio">Certificación</a>
+            <a href="#">Tiktok</a>
+            <a href="#">Instagram</a>
+            <a href="#">Youtube</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Certificación Hyper BI</h1>
+        <p>Responde las preguntas y demuestra tu conocimiento en Power BI.</p>
+    </div>
+
+    <!-- Preguntas -->
+    <div class="long-div yellow">
+        <div class="question">¿Cuál es la principal ventaja de usar Power BI en lugar de Excel para el análisis de datos?</div>
+        <div class="answer yellow-answer"><input type="radio" name="q1" value="a"> A. Power BI permite la creación de informes interactivos y visuales.</div>
+        <div class="answer yellow-answer"><input type="radio" name="q1" value="b"> B. Power BI no requiere una conexión a internet para funcionar.</div>
+        <div class="answer yellow-answer"><input type="radio" name="q1" value="c"> C. Power BI puede importar datos desde fuentes que Excel no puede manejar.</div>
+        <div class="answer yellow-answer"><input type="radio" name="q1" value="d"> D. Power BI es más barato que Excel.</div>
+    </div>
+
+    <div class="long-div purple">
+        <div class="question">¿Qué tipo de visualización en Power BI se utiliza para mostrar la relación entre variables?</div>
+        <div class="answer purple-answer"><input type="radio" name="q2" value="a"> A. Gráfico de barras</div>
+        <div class="answer purple-answer"><input type="radio" name="q2" value="b"> B. Diagrama de dispersión</div>
+        <div class="answer purple-answer"><input type="radio" name="q2" value="c"> C. Gráfico circular</div>
+        <div class="answer purple-answer"><input type="radio" name="q2" value="d"> D. Mapa geográfico</div>
+    </div>
+
+    <div class="long-div yellow">
+        <div class="question">¿Cuál de las siguientes opciones NO es un tipo de visualización disponible en Power BI?</div>
+        <div class="answer yellow-answer"><input type="radio" name="q3" value="a"> A. Gráfico de área</div>
+        <div class="answer yellow-answer"><input type="radio" name="q3" value="b"> B. Gráfico de Gantt</div>
+        <div class="answer yellow-answer"><input type="radio" name="q3" value="c"> C. Diagrama de Venn</div>
+        <div class="answer yellow-answer"><input type="radio" name="q3" value="d"> D. Mapa de calor</div>
+    </div>
+
+    <div class="long-div purple">
+        <div class="question">¿Cómo se llama la función de Power BI que permite combinar datos de diferentes tablas basadas en una columna común?</div>
+        <div class="answer purple-answer"><input type="radio" name="q4" value="a"> A. Union</div>
+        <div class="answer purple-answer"><input type="radio" name="q4" value="b"> B. Merge</div>
+        <div class="answer purple-answer"><input type="radio" name="q4" value="c"> C. Join</div>
+        <div class="answer purple-answer"><input type="radio" name="q4" value="d"> D. Append</div>
+    </div>
+
+    <div class="long-div yellow">
+        <div class="question">¿Qué formato de archivo se utiliza comúnmente para guardar los informes de Power BI para compartir con otros usuarios?</div>
+        <div class="answer yellow-answer"><input type="radio" name="q5" value="a"> A. .pbix</div>
+        <div class="answer yellow-answer"><input type="radio" name="q5" value="b"> B. .xlsx</div>
+        <div class="answer yellow-answer"><input type="radio" name="q5" value="c"> C. .pdf</div>
+        <div class="answer yellow-answer"><input type="radio" name="q5" value="d"> D. .csv</div>
+    </div>
+
+    <div class="long-div purple">
+        <div class="question">¿Cuál es la diferencia principal entre Power BI Desktop y Power BI Service?</div>
+        <div class="answer purple-answer"><input type="radio" name="q6" value="a"> A. Power BI Service es una versión más barata que Power BI Desktop.</div>
+        <div class="answer purple-answer"><input type="radio" name="q6" value="b"> B. Power BI Desktop es para usuarios de escritorio, mientras que Power BI Service es una plataforma en línea.</div>
+        <div class="answer purple-answer"><input type="radio" name="q6" value="c"> C. Power BI Desktop permite la colaboración en tiempo real, mientras que Power BI Service no.</div>
+        <div class="answer purple-answer"><input type="radio" name="q6" value="d"> D. Power BI Service permite la creación de informes, mientras que Power BI Desktop solo los visualiza.</div>
+    </div>
+
+    <div class="long-div yellow">
+        <div class="question">¿Qué tipo de datos se pueden cargar en Power BI?</div>
+        <div class="answer yellow-answer"><input type="radio" name="q7" value="a"> A. Archivos Excel, bases de datos SQL y servicios en la nube como Azure</div>
+        <div class="answer yellow-answer"><input type="radio" name="q7" value="b"> B. Solo archivos CSV</div>
+        <div class="answer yellow-answer"><input type="radio" name="q7" value="c"> C. Solo bases de datos SQL</div>
+        <div class="answer yellow-answer"><input type="radio" name="q7" value="d"> D. Ninguna de las anteriores</div>
+    </div>
+
+    <div class="long-div purple">
+        <div class="question">¿Qué es un "Dashboard" en Power BI?</div>
+        <div class="answer purple-answer"><input type="radio" name="q8" value="a"> A. Un conjunto de páginas con visualizaciones interactivas.</div>
+        <div class="answer purple-answer"><input type="radio" name="q8" value="b"> B. Una sola visualización en un reporte.</div>
+        <div class="answer purple-answer"><input type="radio" name="q8" value="c"> C. Un documento que se envía por correo.</div>
+        <div class="answer purple-answer"><input type="radio" name="q8" value="d"> D. Ninguna de las anteriores.</div>
+    </div>
+
+    <div class="long-div yellow">
+        <div class="question">¿Cómo se puede compartir un informe de Power BI con otras personas?</div>
+        <div class="answer yellow-answer"><input type="radio" name="q9" value="a"> A. A través de Power BI Service</div>
+        <div class="answer yellow-answer"><input type="radio" name="q9" value="b"> B. Exportándolo como archivo PDF</div>
+        <div class="answer yellow-answer"><input type="radio" name="q9" value="c"> C. Publicando en un sitio web</div>
+        <div class="answer yellow-answer"><input type="radio" name="q9" value="d"> D. Todas las anteriores</div>
+    </div>
+
+    <div class="long-div purple">
+        <div class="question">¿Qué tipo de licencia se necesita para utilizar Power BI en una empresa?</div>
+        <div class="answer purple-answer"><input type="radio" name="q10" value="a"> A. Power BI Pro</div>
+        <div class="answer purple-answer"><input type="radio" name="q10" value="b"> B. Power BI Free</div>
+        <div class="answer purple-answer"><input type="radio" name="q10" value="c"> C. Power BI Premium</div>
+        <div class="answer purple-answer"><input type="radio" name="q10" value="d"> D. Ninguna de las anteriores</div>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Botón para verificar respuestas -->
+    <button class="submit-btn" onclick="checkAnswers()">Comprobar</button>
+
+    <!-- Botón de descarga de certificación (inicialmente oculto) -->
+    <button class="download-btn" id="downloadBtn" onclick="downloadCertificate()">Descargar</button>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'a',
+            q6: 'b',
+            q7: 'a',
+            q8: 'a',
+            q9: 'd',
+            q10: 'a'
+        };
+
+        function checkAnswers() {
+            let correctCount = 0;
+
+            // Comprobar todas las respuestas
+            for (let question in correctAnswers) {
+                const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+                    correctCount++;
+                }
+            }
+
+            // Calcular el porcentaje de respuestas correctas
+            const progress = (correctCount / 10) * 100;
+
+            // Actualizar la barra de progreso
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Si la barra llega al 100%, mostrar el botón de descargar
+            if (progress === 100) {
+                document.getElementById('downloadBtn').style.display = 'inline-block';
+            }
+        }
+
+        function downloadCertificate() {
+            // Aquí puedes incluir la lógica para la descarga de un archivo real.
+            // Por ejemplo, podrías redirigir a un enlace donde esté el archivo .pdf.
+            window.location.href = 'certificado.pdf'; // Reemplaza con tu URL de descarga real
+        }
+    </script>
+</body>
+</html>
